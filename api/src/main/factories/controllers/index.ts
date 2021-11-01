@@ -1,0 +1,7 @@
+export * from './log-controller-decorator.factory'
+export * from './adicionar-pessoa.factory'
+export * from './alterar-pessoa.factory'
+export * from './carregar-pessoa.factory'
+export * from './carregar-pessoas.factory'
+export * from './deletar-pessoa.factory'
+export * from './carregar-cores.factory'

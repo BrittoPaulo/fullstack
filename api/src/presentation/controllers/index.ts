@@ -1,0 +1,6 @@
+export * from './adicionar-pessoa'
+export * from './alterar-pessoa'
+export * from './carregar-pessoa'
+export * from './carregar-pessoas'
+export * from './deletar-pessoa'
+export * from './carregar-cores'
