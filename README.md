@@ -6,7 +6,7 @@ Construa um front-end que consuma a api de cadastro de pessoas. A api está apre
 
 Serviços que devem ser consumidos:
 - Criação de Pessoa (Onde deve ser feito o vinculo da pessoa com sua cor favorita)
-- Listagem de Pessoa
+- Visualização de Pessoa
 - Listagem de Pessoas
 - Atualização de Pessoa
 - Listagem de Cores
