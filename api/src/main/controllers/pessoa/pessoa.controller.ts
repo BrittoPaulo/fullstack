@@ -22,7 +22,7 @@ export class PessoaController {
     private readonly construirCarregarPessoaController: ConstruirCarregarPessoaController,
     private readonly construirCarregarPessoasController: ConstruirCarregarPessoasController,
     private readonly construirDeletarPessoaController: ConstruirDeletarPessoaController,
-  ) {}
+  ) { }
 
   @Post()
   @UsePipes(new ValidationPipe({ whitelist: true }))
@@ -47,7 +47,9 @@ export class PessoaController {
   @Get(':id')
   async carregarPessoa(@Param('id', ParseIntPipe) id: number, @Res() res: any): Promise<HttpResponse> {
     console.info('Buscando pessoa por ID...')
-    const resultado = await controllerAdpter(this.construirCarregarPessoaController.fabricar())
+    const resultado = await controllerAdpter(this.construirCarregarPessoaController.fabricar(), {
+      id
+    })
     return res.status(resultado.statusCode).json(resultado)
   }
 
