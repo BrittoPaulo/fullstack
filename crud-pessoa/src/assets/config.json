@@ -1,0 +1,75 @@
+{
+  "statusCode": 200,
+  "body": [
+      {
+          "id": 1,
+          "nome": "Paulo",
+          "corFavoritaId": 1,
+          "createdAt": "2021-11-07T01:03:52.685Z",
+          "updatedAt": "2021-11-07T01:03:52.685Z"
+      },
+      {
+          "id": 2,
+          "nome": "Carlos",
+          "corFavoritaId": 2,
+          "createdAt": "2021-11-07T01:05:15.253Z",
+          "updatedAt": "2021-11-07T01:05:15.253Z"
+      },
+      {
+          "id": 3,
+          "nome": "Zé",
+          "corFavoritaId": 1,
+          "createdAt": "2021-11-07T01:05:24.571Z",
+          "updatedAt": "2021-11-07T01:19:27.666Z"
+      },
+      {
+          "id": 4,
+          "nome": "Federico",
+          "corFavoritaId": 5,
+          "createdAt": "2021-11-07T01:05:38.127Z",
+          "updatedAt": "2021-11-07T01:05:38.127Z"
+      },
+      {
+          "id": 5,
+          "nome": "Louisa",
+          "corFavoritaId": 1,
+          "createdAt": "2021-11-07T01:05:49.754Z",
+          "updatedAt": "2021-11-07T01:05:49.754Z"
+      },
+      {
+          "id": 6,
+          "nome": "Pedro",
+          "corFavoritaId": 3,
+          "createdAt": "2021-11-07T01:05:57.432Z",
+          "updatedAt": "2021-11-07T01:05:57.432Z"
+      },
+      {
+          "id": 7,
+          "nome": "Léo",
+          "corFavoritaId": 2,
+          "createdAt": "2021-11-07T01:06:11.095Z",
+          "updatedAt": "2021-11-07T01:06:11.095Z"
+      },
+      {
+          "id": 8,
+          "nome": "Leonardo de zé",
+          "corFavoritaId": 4,
+          "createdAt": "2021-11-07T01:06:25.513Z",
+          "updatedAt": "2021-11-07T01:06:25.513Z"
+      },
+      {
+          "id": 9,
+          "nome": "Carlinha dos anjos",
+          "corFavoritaId": 3,
+          "createdAt": "2021-11-07T01:06:40.897Z",
+          "updatedAt": "2021-11-07T01:06:40.897Z"
+      },
+      {
+          "id": 10,
+          "nome": "sandy",
+          "corFavoritaId": 1,
+          "createdAt": "2021-11-07T01:06:50.039Z",
+          "updatedAt": "2021-11-07T01:06:50.039Z"
+      }
+  ]
+}

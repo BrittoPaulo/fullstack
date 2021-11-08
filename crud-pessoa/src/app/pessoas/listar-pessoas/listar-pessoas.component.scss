@@ -1,0 +1,54 @@
+
+.container{
+  display: flex;
+  margin: 10px auto;
+  flex-direction: column;
+  padding-left: 15%;
+  padding-right: 15%;
+  .mat-card{
+    border-end-end-radius: 0px;
+    border-end-start-radius: 0px;
+    background: #721c80;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  .mat-header-cell{
+    font-size:1.3rem
+  }
+  .mat-cell{
+    font-size:1.2rem
+  }
+  .spinner{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-spinner {
+    ::ng-deep circle {
+        stroke: #721c80;
+    }
+  }
+
+
+}
+table{
+  width: 100%;
+}
+
+@media screen and (max-width: 740px) {
+  .container{
+    padding-left: 5%;
+    padding-right: 5%;
+    .mat-card{
+
+      font-size: 1.3rem;
+    }
+    .mat-header-cell{
+      font-size:1.2rem
+    }
+    .mat-cell{
+      font-size:1rem
+    }
+  }
+}
