@@ -1,0 +1,25 @@
+.mat-dialog-content{
+  width: 500px;
+  height: 250px;
+  .dialog-line{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    line-height: 36px;
+  }
+  .fiel{
+    color:gray
+  }
+
+}
+.spinner{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 720px){
+  .mat-dialog-content{
+    width: 300px;
+    height: 250px;
+  }
+}

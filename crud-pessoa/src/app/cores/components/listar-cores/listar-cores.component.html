@@ -1,0 +1,31 @@
+<div mat-dialog-content class="container">
+  <mat-card>Cores</mat-card>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="selectCores">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let cores">{{cores.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cor">
+        <th mat-header-cell *matHeaderCellDef>Cor</th>
+        <td mat-cell *matCellDef="let cores">{{cores.descricao}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <div *ngIf="carregando" class="spinner">
+      <mat-spinner color="accent" diameter="40"></mat-spinner>
+    </div>
+    <div *ngIf="!carregando && !selectCores" class="message">
+      Nenhum registro carregado
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close color="warn">Fechar</button>
+  </div>
+</div>

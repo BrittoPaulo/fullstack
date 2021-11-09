@@ -1,12 +1,15 @@
-
-import { ObjectPessoa, Pessoa, Parametros } from './../model/pessoa';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
+import { ObjectPessoas, Parametros, Pessoa } from './../model/pessoa';
 import { PessoaService } from './../services/pessoa.service';
-import { PageEvent } from '@angular/material/paginator';
-import { Sort } from '@angular/material/sort';
+import { DeletarPessoaComponent } from './components/deletar-pessoa/deletar-pessoa.component';
+import { VisualizarPessoaComponent } from './components/visualizar-pessoa/visualizar-pessoa.component';
 
 @Component({
   selector: 'app-listar-pessoas',
@@ -14,54 +17,92 @@ import { Sort } from '@angular/material/sort';
   styleUrls: ['./listar-pessoas.component.scss']
 })
 export class ListarPessoasComponent implements OnInit {
-  objectPessoa: Observable<ObjectPessoa>;
+  displayedColumns: string[] = ['id', 'nome', 'corFavorita', 'actions']
+  objectPessoas: Observable<ObjectPessoas>
   pessoas: Pessoa[];
   totalPeople: number;
   parametros: Parametros;
-  displayedColumns :  string[] =  ['id', 'nome']
   pageEvent!: PageEvent;
   carregando: boolean;
-  constructor(private pessoaService: PessoaService, ) {
-    this.carregando  = true;
+
+  constructor(
+    private pessoaService: PessoaService,
+    public dialog: MatDialog,
+    private router: Router,
+  ) {
+    this.carregando = true;
     this.parametros =
     {
-      page:1,
-      limit:6
+      page: 1,
+      limit: 6
     }
-   ;
-    this.objectPessoa = this.pessoaService.listaPessoa( this.parametros);
+      ;
+    this.objectPessoas = this.pessoaService.listarPessoa(this.parametros).pipe(
+      catchError(error => {
+        this.carregando = false;
+        this.onError(`Erro ao carregar lista de pesso, tente mais tarde! `)
+        return of()
+      })
+    )
     this.pessoas = []
     this.totalPeople = 0;
-    this.objectPessoa.subscribe(res => {
-      this.totalPeople = res.body.count;
-      this.pessoas = res.body.rows;
-      this.carregando = false;
-    })
-
   }
 
   ngOnInit(): void {
-    console.log(  this.pessoas )
-  }
-
-
-
-  listarPessoas(){
-    this.carregando  = true;
-    this.parametros =
-    {
-      page: this.pageEvent ? this.pageEvent.pageIndex *  this.pageEvent.pageSize: 0,
-      limit: this.pageEvent ? this.pageEvent.pageSize : 5,
-    }
-    this.objectPessoa = this.pessoaService.listaPessoa(this.parametros);
-    this.objectPessoa.subscribe(res => {
+    this.objectPessoas.subscribe(res => {
       this.totalPeople = res.body.count;
       this.pessoas = res.body.rows;
       this.carregando = false;
     })
   }
-  announceSortChange(event: any){
-    console.log(event)
+
+
+
+  listarPessoas() {
+    this.carregando = true;
+    this.parametros =
+    {
+      page: this.pageEvent ? this.pageEvent.pageIndex * this.pageEvent.pageSize : 0,
+      limit: this.pageEvent ? this.pageEvent.pageSize : 5,
+    }
+    this.objectPessoas = this.pessoaService.listarPessoa(this.parametros);
+    this.objectPessoas.subscribe(res => {
+      this.totalPeople = res.body.count;
+      this.pessoas = res.body.rows;
+      this.carregando = false;
+    })
+  }
+  editarPessoa(id: number) {
+    this.router.navigateByUrl(`editar-pessoa/${id}`);
+
   }
 
+  deletarPessoa(id: number, nome: string) {
+    this.onDeleteUser(id, nome);
+  }
+  visualizarPerfil(id: number) {
+    this.onOpenUser(id)
+  }
+
+
+  onOpenUser(id: number) {
+    this.dialog.open(VisualizarPessoaComponent, {
+      data: id,
+    });
+  }
+
+  onDeleteUser(id: number, nome: string) {
+    this.dialog.open(DeletarPessoaComponent, {
+      data: { id, nome },
+    });
+  }
+  onError(errorMessage: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMessage,
+    });
+  }
+
+  cadastrarPessoa() {
+    this.router.navigateByUrl('criar-pessoa');
+  }
 }

@@ -1,0 +1,23 @@
+<form class="form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input id="nome" type="text" matInput formControlName="nome" placeholder="Insira seu nome" [disabled]="true">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Cor favorita</mat-label>
+      <mat-select [compareWith]="compareItems"  panelClass="matRole"  formControlName="corFavorita" name="item" required>
+        <mat-option *ngFor="let item of selectCores | async" [value]="item">
+          {{item.descricao}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!checkoutForm.hasError('corFavorita')">
+        Por favor escolha uma cor
+      </mat-error>
+    </mat-form-field>
+    <div class="div-button">
+      <button mat-raised-button (click)="voltar()">Voltar</button>
+      <button mat-raised-button color="primary" type="submit">Atualizar</button>
+    </div>
+  </div>
+</form>
