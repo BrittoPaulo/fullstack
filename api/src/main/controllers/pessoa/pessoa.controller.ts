@@ -60,7 +60,7 @@ export class PessoaController {
     return res.status(resultado.statusCode).json(resultado)
   }
 
-  @Delete()
+  @Delete(':id')
   async deletarPessoa(@Param('id', ParseIntPipe) id: number, @Res() res: any): Promise<HttpResponse> {
     const resultado = await controllerAdpter(this.construirDeletarPessoaController.fabricar(), {
       id,
