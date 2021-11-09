@@ -1,0 +1,59 @@
+<div class="container">
+  <mat-card>Lista</mat-card>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="pessoas" matTooltip="Info about the action">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let pessoa">{{pessoa.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let pessoa">{{pessoa.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="corFavorita">
+        <th mat-header-cell *matHeaderCellDef> Cor </th>
+        <td mat-cell *matCellDef="let pessoa">{{pessoa.corFavorita.descricao}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ação </th>
+        <td mat-cell *matCellDef="let pessoa">
+          <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editarPessoa(pessoa.id)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="deletarPessoa(pessoa.id, pessoa.nome)">
+              <mat-icon>delete</mat-icon>
+              <span>Deletar</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row (click)="$event.stopPropagation();visualizarPerfil(row.id)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <div *ngIf="carregando" class="spinner">
+      <mat-spinner color="accent" diameter="40"></mat-spinner>
+    </div>
+    <div *ngIf="!carregando && !pessoas.length" class="message">
+      Nenhum registro carregado
+    </div>
+    <mat-paginator [length]="totalPeople" pageSize="{{parametros.limit}}" aria-label="Pessoas por página"
+      (page)="pageEvent=$event; listarPessoas()">
+    </mat-paginator>
+  </div>
+  <div class="div-button">
+    <button mat-flat-button color="primary" (click)="cadastrarPessoa()">Adicionar usuário</button>
+  </div>
+</div>

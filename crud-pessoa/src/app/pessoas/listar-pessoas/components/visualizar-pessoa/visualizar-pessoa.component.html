@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Usuário</h2>
+<div mat-dialog-content *ngIf="!carregarDados && pessoa" >
+    <div class="dialog-line">
+        <span class="fiel">ID</span>
+        <span>{{(pessoa | async)?.id}}</span>
+    </div >
+    <div  class="dialog-line">
+        <span  class="fiel"> Nome</span>
+        <span>{{(pessoa | async)?.nome}}</span>
+    </div>
+    <div  class="dialog-line">
+        <span  class="fiel">Cor</span>
+        <span>{{(pessoa | async)?.corFavorita?.descricao}}</span>
+    </div>
+    <div  class="dialog-line">
+        <span  class="fiel">Criado em</span>
+        <span>{{(pessoa | async)?.createdAt}}</span>
+    </div>
+    <div  class="dialog-line">
+      <span  class="fiel">Atualizado em</span>
+      <span>{{(pessoa | async)?.updatedAt}}</span>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close  color="warn">Fechar</button>
+  </div>
+</div >
+<div *ngIf="carregarDados" class="spinner">
+  <mat-spinner color="accent" diameter="40" ></mat-spinner>
+</div>
+<div *ngIf="!carregarDados && !pessoa" class="spinner">
+  <span>Nenhum registro carregado</span>
+</div>
+

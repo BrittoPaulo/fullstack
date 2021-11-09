@@ -1,0 +1,13 @@
+<div *ngIf="!carregando">
+  <h1 mat-dialog-title>Deletar o usuário <span class="name">{{data.nome}}</span> ?</h1>
+  <div mat-dialog-content>
+    <p>Essa operação é irreversível! Deseja continuar?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button  mat-dialog-close>Voltar</button>
+    <button mat-button (click)="deleteUser(data.id)" cdkFocusInitial color="primary">Continuar</button>
+  </div>
+</div>
+<div *ngIf="carregando" class="spinner">
+  <mat-spinner color="accent" diameter="40" ></mat-spinner>
+</div>

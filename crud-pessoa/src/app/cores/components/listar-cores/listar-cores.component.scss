@@ -1,0 +1,71 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  .mat-card{
+   border-radius: 0;
+    background: #721c80;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  .mat-header-cell{
+    font-size:1.3rem
+  }
+
+  .mat-cell{
+    font-size:1.2rem
+  }
+  .spinner{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-spinner {
+    ::ng-deep circle {
+        stroke: #721c80;
+    }
+  }
+  .message{
+    font-size: 1.3rem;
+    padding: 10% 0;
+    text-align: center;
+  }
+  .div-button{
+    padding: 5% 0;
+  }
+  .mat-dialog-actions{
+    justify-content: space-between;
+  }
+
+}
+table{
+  width: 100%;
+}
+::ng-deep.mat-dialog-container {
+  border-radius: 0 !important;
+  padding: 0px 24px !important;
+}
+.mat-dialog-content{
+  width: 400px;
+  padding: 0 0 20px;
+}
+.mat-dialog-actions{
+  justify-content: space-between;
+  margin-left: 2%;
+}
+@media screen and (max-width: 740px) {
+  .container{
+    width: 349px;
+    .mat-card{
+
+      font-size: 1.3rem;
+    }
+    .mat-header-cell{
+      font-size:1.2rem
+    }
+    .mat-cell{
+      font-size:1rem
+    }
+  }
+}
